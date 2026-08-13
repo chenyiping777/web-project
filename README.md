@@ -1708,15 +1708,3 @@ curl -X POST "http://localhost:8080/upload" \
 **备注说明**：OSS 凭证从环境变量 `OSS_ACCESS_KEY_ID` / `OSS_ACCESS_KEY_SECRET` 读取，文件大小限制由 `spring.servlet.multipart`（10MB）控制。
 
 ---
-
-## 附录：待完善 / 注意事项清单
-
-1. **员工「查询全部（不分页）」**：未实现，见 4.6。
-2. **学员「违纪处理」独立接口**：未实现，当前由 6.4 修改学员代替，见 6.6。
-3. **员工列表字段缺失**：4.1 列表中 `id / username / phone / salary` 恒为 `null`（SQL 未查询这些列）。
-4. **学员详情返回实体**：6.3 返回实体而非 VO，`gender` 为数字、`isCollege` 为 `1/0`，与列表接口不一致。
-5. **部门新增校验**：3.3 控制器未加 `@Valid`，实体上的 `@NotBlank/@Size` 暂不生效。
-6. **班级修改校验**：5.5 控制器未加 `@Valid`，依赖 Service 手动判空。
-7. **操作日志字段不全**：7.5 中 `className / methodName / methodParams / operateTime` 尚未由 AOP 填充；Token 放行路径上的操作 `operateEmpId` 为 `null`。
-8. **班主任姓名**：5.1 班级列表 `masterName` 恒为 `null`（SQL 未联查）。
-9. **Token 放行范围**：`/students/**` 与 `/emp/getAllEmp` 免 Token，如需收紧安全策略可在 `WebConfig` 调整。
