@@ -1,0 +1,241 @@
+/* ========== 全局样式：大耳朵图图｜猪猪侠 卡通可爱童趣风格 ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #ff78a8;        /* 糖果粉主色 */
+  --primary-dark: #e6588c;
+  --danger: #ff5252;
+  --success: #42d392;
+  --warning: #ffb84d;
+  --text: #442c2e;           /* 暖深文字，柔和不刺眼 */
+  --text-secondary: #886b6e; /* 次要文字 */
+  --border: #ffd6e0;         /* 浅粉边框 */
+  --bg: #fff0f3;             /* 页面浅粉背景 */
+  --bg-card: #fffafc;        /* 卡片奶油底色 */
+}
+
+html, body, #app { height: 100%; }
+
+body {
+  /* 圆润卡通字体，优先圆润手写感，回退系统字体 */
+  font-family: "Comic Sans MS", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  background-image: radial-gradient(#ffe4ec 10%, transparent 11%),
+                    radial-gradient(#ffe4ec 10%, transparent 11%);
+  background-size: 40px 40px;
+  background-position: 0 0,20px 20px;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- 通用按钮 卡通圆润按钮，轻微立体 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  box-shadow: 0 3px 0 #ffc8d8;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 5px 0 #ffc8d8;
+}
+.btn:active { transform: translateY(1px); box-shadow: 0 1px 0 #ffc8d8; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow:0 3px 0 #ffc8d8; }
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 3px 0 var(--primary-dark);
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  color: #fff;
+  box-shadow: 0 5px 0 var(--primary-dark);
+}
+.btn-primary:active { transform: translateY(1px); box-shadow:0 1px 0 var(--primary-dark); }
+
+.btn-danger { color: var(--danger); }
+.btn-danger:hover { border-color: var(--danger); background: #ffe9e9; }
+
+.btn-link {
+  border: none; background: none; padding: 0 6px;
+  color: var(--primary); cursor: pointer; font-size: 14px;
+  box-shadow: none;
+}
+.btn-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+  transform: none;
+  box-shadow: none;
+}
+.btn-link.danger { color: var(--danger); }
+
+/* ---------- 表单控件 大圆角卡通输入框 ---------- */
+.input, .select {
+  height: 38px;
+  padding: 0 12px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  font-size: 14px;
+  color: var(--text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input:focus, .select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px #ffd6e0; }
+.input { width: 220px; }
+textarea.input { height: auto; padding: 10px 12px; resize: vertical; border-radius:14px; }
+
+.form-item { margin-bottom: 20px; display: flex; align-items: flex-start; }
+.form-item .label {
+  width: 95px; flex-shrink: 0; text-align: right;
+  padding-right:14px; line-height:38px; color: var(--text-secondary);
+  font-weight:500;
+}
+.form-item .label.required::before { content: "*"; color: var(--danger); margin-right:3px; }
+.form-item .control { flex: 1; }
+.form-item .control .input, .form-item .control .select { width:100%; }
+.form-error { color: var(--danger); font-size:12px; line-height:1.4; margin-top:6px; }
+
+/* ---------- 卡片 胖胖圆角卡通卡片 ---------- */
+.card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding:20px 24px;
+  box-shadow: 0 4px 12px #ffd6e0;
+  border:2px solid #ffe4ec;
+}
+
+/* ---------- 工具条 ---------- */
+.toolbar { display: flex; align-items: center; flex-wrap: wrap; gap:12px; margin-bottom:18px; }
+.toolbar .spacer { flex:1; }
+
+/* ---------- 表格 圆角柔和表格 ---------- */
+.table { width:100%; border-collapse: separate; border-spacing:0; font-size:14px; border-radius:14px; overflow:hidden; }
+.table th, .table td {
+  padding:13px 14px;
+  text-align:left;
+  border-bottom:2px solid var(--border);
+  vertical-align: middle;
+}
+.table th {
+  background: #ffeef4;
+  color: var(--text-secondary);
+  font-weight:600;
+  white-space: nowrap;
+}
+.table tbody tr:hover { background: #fff0f6; }
+.table .empty { text-align:center; color: var(--text-secondary); padding:45px 0; }
+
+/* ---------- 标签tag 胖胖糖果标签 ---------- */
+.tag {
+  display: inline-block;
+  padding:3px 12px;
+  border-radius:20px;
+  font-size:12px;
+  line-height:20px;
+  font-weight:500;
+}
+.tag-green { background: #d7f9e9; color:#229966; }
+.tag-blue { background: #e1eaff; color:#4477dd; }
+.tag-gray { background: #f3e9ec; color:#775559; }
+.tag-orange { background: #ffe9cc; color:#dd7722; }
+.tag-red { background: #ffdddd; color:#dd3333; }
+
+/* ---------- 头像 ---------- */
+.avatar {
+  width:42px; height:42px; border-radius:50%;
+  object-fit:cover; background:#ffd6e0; display:inline-block;
+  border:2px solid #fff;
+}
+
+/* ---------- 分页 ---------- */
+.pager { display:flex; align-items:center; justify-content:flex-end; gap:8px; margin-top:18px; }
+.pager .info { color: var(--text-secondary); margin-right:10px; }
+.pager button {
+  min-width:34px; height:34px; padding:0 10px;
+  border:2px solid var(--border); background:#fff;
+  border-radius:12px; cursor:pointer; font-size:13px; color: var(--text);
+  transition:0.2s;
+}
+.pager button:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+.pager button.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color:#fff;
+}
+.pager button:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
+
+/* ---------- 弹窗modal 大圆角卡通弹窗 ---------- */
+.modal-mask {
+  position:fixed; inset:0;
+  background: rgba(255,180,200,0.4);
+  display:flex; align-items:center; justify-content:center;
+  z-index:1000;
+}
+.modal {
+  background:#fffafc;
+  border-radius:22px;
+  width:580px; max-width:92vw;
+  max-height:86vh; display:flex; flex-direction:column;
+  box-shadow:0 10px 30px #ffb8cc;
+  border:3px solid #ffd6e0;
+}
+.modal.lg { width:740px; }
+.modal-header {
+  padding:18px 22px; border-bottom:2px solid var(--border);
+  font-size:17px; font-weight:600;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.modal-close { border:none; background:none; font-size:20px; cursor:pointer; color: var(--text-secondary); }
+.modal-body { padding:22px; overflow-y:auto; }
+.modal-footer {
+  padding:14px 22px; border-top:2px solid var(--border);
+  display:flex; justify-content:flex-end; gap:12px;
+}
+
+/* ---------- Toast提示 可爱气泡提示 ---------- */
+.toast-wrap {
+  position:fixed; top:28px; left:50%; transform:translateX(-50%);
+  z-index:2000; display:flex; flex-direction:column; gap:12px; align-items:center;
+}
+.toast {
+  padding:12px 22px; border-radius:18px;
+  background:#fffafc; color: var(--text);
+  box-shadow:0 4px 14px #ffc8d8;
+  font-size:14px; display:flex; align-items:center; gap:10px;
+  border:2px solid #ffe4ec;
+  animation: toast-in 0.25s ease-out;
+}
+.toast .dot { width:10px; height:10px; border-radius:50%; }
+.toast.success .dot { background: var(--success); }
+.toast.error .dot { background: var(--danger); }
+.toast.info .dot { background: var(--primary); }
+@keyframes toast-in {
+  from { opacity:0; transform: translateY(-12px) scale(0.95); }
+  to { opacity:1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- 图表卡片 ---------- */
+.chart-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:18px; }
+.chart-box { height:300px; }
+.chart-title { font-size:15px; font-weight:600; margin-bottom:10px; color:#553336; }

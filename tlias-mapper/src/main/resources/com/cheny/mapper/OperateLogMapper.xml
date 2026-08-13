@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cheny.mapper.OperateLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.cheny.domain.entity.OperateLog">
+            <id property="id" column="id" />
+            <result property="operateEmpId" column="operate_emp_id" />
+            <result property="operateTime" column="operate_time" />
+            <result property="className" column="class_name" />
+            <result property="methodName" column="method_name" />
+            <result property="methodParams" column="method_params" />
+            <result property="returnValue" column="return_value" />
+            <result property="costTime" column="cost_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,operate_emp_id,operate_time,class_name,method_name,method_params,
+        return_value,cost_time
+    </sql>
+    <select id="selectOperateVoPage" resultType="com.cheny.domain.vo.OperateLogVo">
+        SELECT
+        ol.id,
+        ol.operate_emp_id,
+        e.name AS operate_emp_name,
+        ol.operate_time,
+        ol.class_name,
+        ol.method_name,
+        ol.method_params,
+        ol.return_value,
+        ol.cost_time
+        FROM operate_log ol
+        LEFT JOIN emp e ON ol.operate_emp_id = e.id
+    </select>
+</mapper>

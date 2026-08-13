@@ -1,0 +1,65 @@
+# ========== Maven ==========
+*/target/
+!.mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ========== Compiled Artifacts ==========
+*.class
+*.jar
+*.war
+*.ear
+
+# ========== IntelliJ IDEA ==========
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ========== Eclipse ==========
+.classpath
+.project
+.settings/
+bin/
+
+# ========== VS Code ==========
+.vscode/
+!.vscode/extensions.json
+
+# ========== Node / Frontend ==========
+tlias-ui/node_modules/
+tlias-ui/dist/
+tlias-ui/.local
+
+# ========== OS ==========
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========== Editor Temp Files ==========
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ========== Logs ==========
+*.log
+backend.log
+
+# ========== Backup ==========
+backup-before-fix/
+backup/
+
+# ========== Environment ==========
+*.env
+*.local
+application-local.yml
+application-local.properties
+
+# ========== Sensitive Config (包含数据库密码/JWT密钥) ==========
+tlias-web-management/src/main/resources/application.yml

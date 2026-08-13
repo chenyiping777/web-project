@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cheny.mapper.ClazzMapper">
+
+    <resultMap id="BaseResultMap" type="com.cheny.domain.entity.Clazz">
+            <id property="id" column="id" />
+            <result property="name" column="name" />
+            <result property="room" column="room" />
+            <result property="beginDate" column="begin_date" />
+            <result property="endDate" column="end_date" />
+            <result property="masterId" column="master_id" />
+            <result property="subject" column="subject" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,room,begin_date,end_date,master_id,
+        subject,create_time,update_time
+    </sql>
+
+    <select id="selectClazzVoPage" resultType="com.cheny.domain.vo.ClazzVo">
+        SELECT
+        c.id,
+        c.name,
+        c.subject,
+        e.name AS master_name,
+        c.begin_date,
+        c.end_date,
+        c.master_id,
+        c.create_time,
+        c.update_time,
+        CASE
+        WHEN NOW() &lt;  c.begin_date THEN 0
+        WHEN NOW() BETWEEN c.begin_date AND c.end_date THEN 1
+        WHEN NOW() &gt; c.end_date THEN 2
+        END AS status
+        FROM clazz c
+        LEFT JOIN emp e ON c.master_id = e.id
+        ${ew.customSqlSegment}
+    </select>
+
+
+    
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cheny.mapper.StudentMapper">
+
+    <resultMap id="BaseResultMap" type="com.cheny.domain.entity.Student">
+            <id property="id" column="id" />
+            <result property="name" column="name" />
+            <result property="no" column="no" />
+            <result property="gender" column="gender" />
+            <result property="phone" column="phone" />
+            <result property="idCard" column="id_card" />
+            <result property="isCollege" column="is_college" />
+            <result property="address" column="address" />
+            <result property="degree" column="degree" />
+            <result property="graduationDate" column="graduation_date" />
+            <result property="clazzId" column="clazz_id" />
+            <result property="violationCount" column="violation_count" />
+            <result property="violationScore" column="violation_score" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,no,gender,phone,id_card,
+        is_college,address,degree,graduation_date,clazz_id,
+        violation_count,violation_score,create_time,update_time
+    </sql>
+
+    <select id="selectStudentPage" resultType="com.cheny.domain.vo.StudentVo">
+        SELECT
+        s.id,
+        s.name,
+        s.no,
+        s.gender,
+        s.phone,
+        s.id_card,
+        s.is_college,
+        s.address,
+        s.degree,
+        s.graduation_date,
+        s.clazz_id,
+        c.name AS clazz_name,
+        s.violation_count,
+        s.violation_score,
+        s.create_time,
+        s.update_time
+        FROM student as s
+        LEFT JOIN clazz as c ON s.clazz_id = c.id
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="countByClazz" resultType="java.util.Map">
+        SELECT c.name clazz_name, COUNT(s.id) cnt
+        FROM clazz c
+        LEFT JOIN student s ON c.id = s.clazz_id
+        GROUP BY c.id, c.name
+        ORDER BY c.id ASC
+    </select>
+
+    <select id="countByDegree" resultType="java.util.Map">
+        SELECT s.degree, COUNT(s.id) cnt
+        FROM student s
+        GROUP BY s.degree
+        ORDER BY s.degree ASC
+    </select>
+</mapper>
